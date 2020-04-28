@@ -20,11 +20,23 @@ class Mern extends Component {
 
 
     getBlogPost = () => {
-        axios.get('/api')
+        axios.get('/api', {
+            headers: { 'Content-Type': 'application/json' }
+        })
+            //.then(res => {
+            //    var data = []
+            //    Object.keys(res.data).forEach(function (key) {
+            //        var val = res.data[key]
+            //        data.push([val.task_name, val._id])
+            //        this.setState({ posts: val });
+            //        console.log('Data has been received!!');
+
+            //    })
+
             .then((response) => {
                 const data = response.data;
                 this.setState({ posts: data });
-                console.log('Data has been received!!');
+
             })
             .catch(() => {
                 alert('Error retrieving data!!!');
@@ -41,19 +53,7 @@ class Mern extends Component {
     //            this.setState({ data: remainder });
     //        })
     //}
-    Delete = (id) => {
-     
-        const remainder = this.state.posts.filter((x) => {
-            if (x._id !== id) return x;
-        });
-        axios.delete('.api' + '/' + id)
-            .then((res) => {
-                this.setState({
-                    posts: remainder
-                })
-            })
-        console.log("sb sdbjkdsk", id)
-    }
+   
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -96,9 +96,10 @@ class Mern extends Component {
 
         return posts.map((post, index) => (
             <div onClick={this.Delete} key={index} className="blog-post__display">
-                <h3 >{post.title}</h3>
+                <h3>{post.title}</h3>
                 <p>{post.author}</p>
                 <p>{post.body}</p>
+
             </div>
         ));
     };

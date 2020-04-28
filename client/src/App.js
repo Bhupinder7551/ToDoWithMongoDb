@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Todo from './Component/ToDo.js';
+//import Todo from './Component/ToDo.js';
 //import Mern from './Component/Mern.js';
+import List from './Component/List.js';
 
-import './App.css';
 
 
 class App extends Component {
@@ -26,10 +26,13 @@ class App extends Component {
 
             <div>
                 <h1>Impossible</h1>
-                <Todo />
-                
-                {// <Mern />
+                {//<Todo />
+
+                    //<Mern />
                 }
+                
+                <List />
+                
             </div>
         )
     }
